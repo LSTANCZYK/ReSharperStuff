@@ -1,0 +1,257 @@
+<TemplatesExport family="Live Templates">
+  <Template uid="6eafbc22-6d26-4f49-a3bf-12fac52605fb" shortcut="mnum" description="Mapped property numeric with format" text="private decimal m_$name$;&#xD;&#xA;[IwAG.XmlTransfer.MappingAttribute(XmlTransferMappingType.$Numeric$, Required = $required$, RegExPattern = pattern$ZimmeranzahlTyp$, DefaultValueForNotSet = &quot;$notsetValue$&quot;, FormatString = format$ZimmeranzahlTyp$)]&#xD;&#xA;[Documentation(&quot;$Name$&quot;, &quot;$Name$ (XmlAttribute: &lt;$Name$&gt;)&quot;, &quot;Zahl, $10$ Vorkomma- und $2$ Nachkommastellen$formatZusatz$.&quot;)]&#xD;&#xA;public decimal $Name$ &#xD;&#xA;{&#xD;&#xA;	get { return m_$name$; }&#xD;&#xA;	set { m_$name$ = (decimal)XmlTransferAttributeConstraints.GetFormattedProperty(this.GetType(), value, &quot;$Name$&quot;); }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;public bool $Name$Specified { get { return $name$ &gt; 0; } }&#xD;&#xA;" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="3.0" />
+    </Context>
+    <Categories>
+      <Category name="Mapped properties" />
+    </Categories>
+    <Variables>
+      <Variable name="Name" expression="suggestVariableName()" initialRange="4" />
+      <Variable name="name" expression="decapitalize(Name)" initialRange="-1" />
+      <Variable name="Numeric" expression="constant(&quot;Currency&quot;)" initialRange="0" />
+      <Variable name="required" expression="list(&quot;true,false&quot;)" initialRange="0" />
+      <Variable name="ZimmeranzahlTyp" expression="completeSmart()" initialRange="0" />
+      <Variable name="notsetValue" expression="constant(&quot;0&quot;)" initialRange="0" />
+      <Variable name="10" expression="constant(&quot;15&quot;)" initialRange="0" />
+      <Variable name="2" expression="constant(&quot;2&quot;)" initialRange="0" />
+      <Variable name="formatZusatz" expression="constant(&quot;, von 0.5 bis 9999&quot;)" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="4e1cf059-7724-43b7-aab2-d245f35e6651" shortcut="mprop" description="mapped property" text="			[IwAG.XmlTransfer.MappingAttribute(IwAG.XmlTransfer.XmlTransferMappingType.$mappingType$)]&#xD;&#xA;			[Documentation(&quot;$Name$&quot;, &quot;$Name$ (Xml$Attribute$: &lt;$Name$&gt;)&quot;, &quot;$FormatDescription$&quot;)]&#xD;&#xA;			public $type$ $Name$ { get; set; }" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="3.0" />
+    </Context>
+    <Categories>
+      <Category name="Mapped properties" />
+    </Categories>
+    <Variables>
+      <Variable name="type" expression="guessExpectedType()" initialRange="0" />
+      <Variable name="Name" expression="" initialRange="3" />
+      <Variable name="mappingType" expression="completeSmart()" initialRange="0" />
+      <Variable name="Attribute" expression="list(&quot;Attribute,Element&quot;)" initialRange="0" />
+      <Variable name="FormatDescription" expression="list(&quot;Datum,Maximale Länge: 80 Zeichen&quot;)" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="d6697f81-691f-447a-b4b9-8b0956edc3ca" shortcut="action" description="ASP.NET MVC Action Method" text="public ActionResult $Action$() {&#xD;&#xA;    $END$&#xD;&#xA;    return View();&#xD;&#xA;}" reformat="False" shortenQualifiedReferences="False">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="Action" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="805f784d-1ad4-4882-bd26-2847d57f968b" shortcut="ae" description="NUnit Assert.AreEqual Method" text="Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual($expected$, $actual$);$END$" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="expected" expression="" initialRange="0" />
+      <Variable name="actual" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="fadd86e4-df3a-4b2b-a536-2bfbf4dfd922" shortcut="af" description="Assert.IsFalse" text="Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse($value$, &quot;$msg$&quot;);" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="value" expression="" initialRange="0" />
+      <Variable name="msg" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="389b484c-bf7f-4f0f-b9e0-ec3023048922" shortcut="an" description="ArgumentNullException" text="if ($objekt$ == null)&#xD;&#xA;	throw new System.ArgumentNullException(&quot;$objekt$&quot;);" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="objekt" expression="variableOfType()" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="14ca769a-6df0-4985-bd85-181fb16d2a75" shortcut="ann" description="Assert.IsNotNull" text="Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull($object$, &quot;$object$ should be not null&quot;);" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="object" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="a1e6ae09-f9ec-49c5-8aeb-5f911bc29fd0" shortcut="at" description="Assert is true MS Test" text="Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue($exp$);" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Expression" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="exp" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="1bf61eb9-0ce5-4e76-a3af-f2dcce6f4b3a" shortcut="dda" description="DebuggerDisplayAttribute with type" text="[System.Diagnostics.DebuggerDisplayAttribute(@&quot;\{{GetType().Name,nq}\}&quot;)]" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables />
+    <CustomProperties />
+  </Template>
+  <Template uid="0de48a4d-b4c7-4b2b-b63d-57c6d4feb90b" shortcut="dep" description="Dependency property and property change routed event" text="       #region $PROPNAME$ Property and Property Change Routed event&#xD;&#xA;&#xD;&#xA;        public static readonly DependencyProperty $PROPNAME$Property&#xD;&#xA;            = DependencyProperty.Register( &#xD;&#xA;                &quot;$PROPNAME$&quot;, typeof ($PROPTYPE$), typeof ($DECLARING_TYPE$), &#xD;&#xA;                new PropertyMetadata(default($PROPTYPE$) , On$PROPNAME$Changed ));&#xD;&#xA;&#xD;&#xA;        public $PROPTYPE$ $PROPNAME$ &#xD;&#xA;        { &#xD;&#xA;            get { return ($PROPTYPE$) GetValue($PROPNAME$Property); } &#xD;&#xA;            set { SetValue($PROPNAME$Property,value); } &#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;       public static readonly RoutedEvent $PROPNAME$ChangedEvent&#xD;&#xA;           = EventManager.RegisterRoutedEvent(&#xD;&#xA;               &quot;$PROPNAME$Changed&quot;,&#xD;&#xA;               RoutingStrategy.$ROUTINGSTRATEGY$,&#xD;&#xA;               typeof( RoutedPropertyChangedEventHandler$PROPTYPE$ &gt; ),&#xD;&#xA;               typeof( $DECLARING_TYPE$ ) );&#xD;&#xA;&#xD;&#xA;       public event RoutedPropertyChangedEventHandler$PROPTYPE$ &gt; $PROPNAME$Changed&#xD;&#xA;       {&#xD;&#xA;           add { AddHandler( $PROPNAME$ChangedEvent, value ); }&#xD;&#xA;           remove { RemoveHandler( $PROPNAME$ChangedEvent, value ); }&#xD;&#xA;       }&#xD;&#xA;&#xD;&#xA;        private static void On$PROPNAME$Changed(&#xD;&#xA;            DependencyObject d,&#xD;&#xA;            DependencyPropertyChangedEventArgs e) &#xD;&#xA;        { &#xD;&#xA;            var $DECLARING_TYPE_var$ = d as $DECLARING_TYPE$; &#xD;&#xA;           var args = new RoutedPropertyChangedEventArgs$PROPTYPE$ &gt;(&#xD;&#xA;               ( $PROPTYPE$ ) e.OldValue,&#xD;&#xA;               ( $PROPTYPE$ ) e.NewValue );&#xD;&#xA;           args.RoutedEvent    = $DECLARING_TYPE$.$PROPNAME$ChangedEvent;&#xD;&#xA;           $DECLARING_TYPE_var$.RaiseEvent( args );$END$&#xD;&#xA;        } &#xD;&#xA;&#xD;&#xA;       #endregion" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="3.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="PROPNAME" expression="LiveMacros.SuggestProperty()" initialRange="3" />
+      <Variable name="PROPTYPE" expression="guessExpectedType()" initialRange="2" />
+      <Variable name="DECLARING_TYPE" expression="typeName()" initialRange="1" />
+      <Variable name="ROUTINGSTRATEGY" expression="complete()" initialRange="0" />
+      <Variable name="DECLARING_TYPE_var" expression="suggestVariableName()" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="e0e384ab-7076-4cfb-8ccc-1d51a140dc6a" shortcut="depr" description="Readonly dependency property and property change routed event" text="       #region $PROPNAME$ Read-Only Property and Property Change Routed Event&#xD;&#xA;&#xD;&#xA;        private static readonly DependencyPropertyKey $PROPNAME$PropertyKey = &#xD;&#xA;                                            DependencyProperty.RegisterReadOnly( &#xD;&#xA;            &quot;$PROPNAME$&quot;, typeof ( $PROPTYPE$ ), typeof ( $DECLARING_TYPE$ ), &#xD;&#xA;            new PropertyMetadata( default($PROPTYPE$) , On$PROPNAME$Changed ) );&#xD;&#xA;&#xD;&#xA;       public static readonly DependencyProperty $PROPNAME$Property =&#xD;&#xA;                                           $PROPNAME$PropertyKey.DependencyProperty;&#xD;&#xA;&#xD;&#xA;        public $PROPTYPE$ $PROPNAME$ &#xD;&#xA;        { &#xD;&#xA;            get { return ( $PROPTYPE$ ) GetValue( $PROPNAME$Property ); } &#xD;&#xA;            private set { SetValue( $PROPNAME$PropertyKey, value ); } &#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;       public static readonly RoutedEvent $PROPNAME$ChangedEvent   =&#xD;&#xA;                                           EventManager.RegisterRoutedEvent(&#xD;&#xA;           &quot;$PROPNAME$Changed&quot;,&#xD;&#xA;           RoutingStrategy.$ROUTINGSTRATEGY$,&#xD;&#xA;           typeof( RoutedPropertyChangedEventHandler&lt; $PROPTYPE$ &gt; ),&#xD;&#xA;           typeof( $DECLARING_TYPE$ ) );&#xD;&#xA;&#xD;&#xA;       public event RoutedPropertyChangedEventHandler&lt; $PROPTYPE$ &gt; $PROPNAME$Changed&#xD;&#xA;       {&#xD;&#xA;           add { AddHandler( $PROPNAME$ChangedEvent, value ); }&#xD;&#xA;           remove { RemoveHandler( $PROPNAME$ChangedEvent, value ); }&#xD;&#xA;       }&#xD;&#xA;&#xD;&#xA;        private static void On$PROPNAME$Changed(&#xD;&#xA;           DependencyObject d, DependencyPropertyChangedEventArgs e) &#xD;&#xA;        { &#xD;&#xA;            var $DECLARING_TYPE_var$ = d as $DECLARING_TYPE$; &#xD;&#xA;           var args = new RoutedPropertyChangedEventArgs&lt; $PROPTYPE$ &gt;(&#xD;&#xA;               ( $PROPTYPE$ ) e.OldValue,&#xD;&#xA;               ( $PROPTYPE$ ) e.NewValue );&#xD;&#xA;           args.RoutedEvent = $DECLARING_TYPE$.$PROPNAME$ChangedEvent;&#xD;&#xA;           $DECLARING_TYPE_var$.RaiseEvent( args );$END$&#xD;&#xA;        } &#xD;&#xA;&#xD;&#xA;       #endregion" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="3.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="PROPNAME" expression="LiveMacros.SuggestProperty()" initialRange="3" />
+      <Variable name="PROPTYPE" expression="guessExpectedType()" initialRange="2" />
+      <Variable name="DECLARING_TYPE" expression="typeName()" initialRange="0" />
+      <Variable name="ROUTINGSTRATEGY" expression="complete()" initialRange="0" />
+      <Variable name="DECLARING_TYPE_var" expression="suggestVariableName()" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="db7e0ab1-d0e1-4e89-b19e-4140ad60a8cf" shortcut="dp" description="Debug.Print value" text="&#xD;&#xA;System.Diagnostics.Debug.Print($pos$);" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Statement" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="pos" expression="variableOfType(&quot;System.String&quot;)" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="444057f3-6381-4cce-9162-70efa8dff994" shortcut="dprop" description="Dependency property" text="#region $name$&#xD;&#xA;&#xD;&#xA;/// &lt;summary&gt;&#xD;&#xA;/// &lt;see cref=&quot;$name$&quot;/&gt; dependency property.&#xD;&#xA;/// &lt;/summary&gt;&#xD;&#xA;public static readonly System.Windows.DependencyProperty $name$Property =&#xD;&#xA;	System.Windows.DependencyProperty.Register(&quot;$name$&quot;, typeof($type$), typeof($containingType$),&#xD;&#xA;	                            new System.Windows.FrameworkPropertyMetadata(default($type$)));&#xD;&#xA;&#xD;&#xA;/// &lt;summary&gt;&#xD;&#xA;/// The $nameComment$.&#xD;&#xA;/// &lt;/summary&gt;&#xD;&#xA;public $type$ $name$ {&#xD;&#xA;	get { return ($type$)GetValue($name$Property); }&#xD;&#xA;	set { SetValue($name$Property, value); }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;#endregion" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="name" expression="LiveMacros.SuggestProperty()" initialRange="4" />
+      <Variable name="type" expression="guessExpectedType()" initialRange="2" />
+      <Variable name="containingType" expression="typeName()" initialRange="-1" />
+      <Variable name="nameComment" expression="decapitalize(name)" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="7f8f584d-845c-4665-8235-dc961ad6efd3" shortcut="dpwrap" description="Property wrapper that works with a Dependency Property" text="public $type$ $name$&#xD;&#xA;{&#xD;&#xA;   get { return ($type$) GetValue($name$Property); }&#xD;&#xA;   set { SetValue($name$Property, value); }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="3.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="type" expression="suggestVariableType()" initialRange="0" />
+      <Variable name="name" expression="LiveMacros.SuggestProperty()" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="811615ea-0ef7-4e6e-9dee-d74ae16e7cfd" shortcut="mbe" description="Estate Pro MessageBox" text="var res = System.Windows.Forms.MessageBox.Show(&quot;$msg$&quot;,&#xD;&#xA;System.Windows.Forms.Application.ProductName, $buttons$, $icon$);&#xD;&#xA;				if (res != $res$)&#xD;&#xA;					return;" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Expression" minimumLanguageVersion="3.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="msg" expression="" initialRange="0" />
+      <Variable name="buttons" expression="completeSmart()" initialRange="0" />
+      <Variable name="icon" expression="completeSmart()" initialRange="0" />
+      <Variable name="res" expression="completeSmart()" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="5cc77cb1-2bcf-4dd3-9769-fda904aa2b13" shortcut="msc" description="Mapped property with single choise" text="			[IwAG.XmlTransfer.MappingAttribute(IwAG.XmlTransfer.XmlTransferMappingType.$SingleChoice$, typeof($type$))]&#xD;&#xA;			[Documentation(&quot;$Name$&quot;, &quot;$Name$ (Xml$Attribute$: &lt;$Name$&gt;)&quot;)]&#xD;&#xA;			public $type$ $Name$ { get; set; }" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="3.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="type" expression="suggestVariableType()" initialRange="1" />
+      <Variable name="Name" expression="" initialRange="3" />
+      <Variable name="SingleChoice" expression="" initialRange="0" />
+      <Variable name="Attribute" expression="list(&quot;Attribute,Element&quot;)" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="5981a89e-37d4-4832-9f62-6d4e77f9609e" shortcut="rcmd" description="RelayCommand property" text="#region $Name$Command&#xD;&#xA;private ICommand _$bname$Command;&#xD;&#xA;&#xD;&#xA;public System.Windows.Input.ICommand $Name$Command&#xD;&#xA;{&#xD;&#xA;	get&#xD;&#xA;	{&#xD;&#xA;		if (_$bname$Command == null)&#xD;&#xA;		{&#xD;&#xA;			_$bname$Command = new RelayCommand(&#xD;&#xA;				param =&gt; this.$Name$(),&#xD;&#xA;				param =&gt; this.Can$Name$);&#xD;&#xA;		}&#xD;&#xA;		return _$bname$Command;&#xD;&#xA;	}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;#endregion $Name$Command" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="Name" expression="LiveMacros.SuggestProperty()" initialRange="0" />
+      <Variable name="bname" expression="decapitalize(Name)" initialRange="-1" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="ebf51aec-4ad2-448b-bc32-a1b09039b4ed" shortcut="rxoprop" description="reactiveui  read-only property whose value is backed by an IObservable" text="&#xD;&#xA;#region $Name$&#xD;&#xA;&#xD;&#xA;[UsedImplicitly]&#xD;&#xA;private ReactiveUI.ObservableAsPropertyHelper&lt;$type$&gt; _$Name$;&#xD;&#xA;&#xD;&#xA;public $type$ $Name$&#xD;&#xA;{&#xD;&#xA;	get { return _$Name$.Value; }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;#endregion $Name$&#xD;&#xA;" reformat="True" shortenQualifiedReferences="True">
+    <Scopes>
+      <Scope type="InCSharpTypeMember" minimumLanguageVersion="4.0" />
+    </Scopes>
+    <Categories />
+    <Variables>
+      <Variable name="type" expression="suggestVariableType()" initialRange="1" />
+      <Variable name="Name" expression="suggestVariableName()" initialRange="2" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="2b49f85f-40c8-4836-89aa-998bd68a349d" shortcut="rxprop" description="reactiveui property" text="#region $Name$&#xD;&#xA;[UsedImplicitly]&#xD;&#xA;private $type$ _$Name$;&#xD;&#xA;&#xD;&#xA;public $type$ $Name$&#xD;&#xA;{&#xD;&#xA;	get { return _$Name$; }&#xD;&#xA;	set	{ this.RaiseAndSetIfChanged(x =&gt; x.$Name$, value); }&#xD;&#xA;}&#xD;&#xA;#endregion $Name$" reformat="True" shortenQualifiedReferences="True">
+    <Scopes>
+      <Scope type="InCSharpTypeMember" minimumLanguageVersion="4.0" />
+    </Scopes>
+    <Categories />
+    <Variables>
+      <Variable name="type" expression="suggestVariableType()" initialRange="1" />
+      <Variable name="Name" expression="suggestVariableName()" initialRange="2" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="9b034de4-1e00-40fe-b1cc-351d24c9b09b" shortcut="setup" description="NUnit Setup Method" text="[SetUp]&#xD;&#xA;public void Setup() {&#xD;&#xA;    $END$&#xD;&#xA;}" reformat="False" shortenQualifiedReferences="False">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables />
+    <CustomProperties />
+  </Template>
+  <Template uid="78da07c0-9102-471f-bf54-cde2d9cdb987" shortcut="tc" description="MS Test class" text="/// &lt;summary&gt;&#xD;&#xA;///  Unit tests for &lt;see cref=&quot;$NAME$&quot;/&gt;&#xD;&#xA;/// &lt;/summary&gt;&#xD;&#xA;[Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute]&#xD;&#xA;public class $NAME$Test&#xD;&#xA;{&#xD;&#xA;	//#region Initialize/Cleanup&#xD;&#xA;&#xD;&#xA;	///// &lt;summary&gt;&#xD;&#xA;	///// Initialize before running the first test in the class.&#xD;&#xA;	///// &lt;/summary&gt;&#xD;&#xA;	///// &lt;param name=&quot;testContext&quot;&gt;The test context.&lt;/param&gt;&#xD;&#xA;	//[ClassInitialize]&#xD;&#xA;	//public static void ClassInitialize(TestContext testContext)&#xD;&#xA;	//{&#xD;&#xA;	//}&#xD;&#xA;&#xD;&#xA;	///// &lt;summary&gt;&#xD;&#xA;	///// Cleanup after all tests in a class have run.&#xD;&#xA;	///// &lt;/summary&gt;&#xD;&#xA;	//[ClassCleanup]&#xD;&#xA;	//public static void ClassCleanup()&#xD;&#xA;	//{	&#xD;&#xA;	//}&#xD;&#xA;&#xD;&#xA;	///// &lt;summary&gt;&#xD;&#xA;	///// Initialize before running each test&#xD;&#xA;	///// &lt;/summary&gt;&#xD;&#xA;	//[TestInitialize]&#xD;&#xA;	//public void TestInitialize()&#xD;&#xA;	//{&#xD;&#xA;	//}&#xD;&#xA;&#xD;&#xA;	///// &lt;summary&gt;&#xD;&#xA;	///// Cleanup after each test has run.&#xD;&#xA;	///// &lt;/summary&gt;&#xD;&#xA;	//[TestCleanup]&#xD;&#xA;	//public void TestCleanup()&#xD;&#xA;	//{&#xD;&#xA;	//}&#xD;&#xA;&#xD;&#xA;	//#endregion&#xD;&#xA;&#xD;&#xA;	[Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute]&#xD;&#xA;	public void ExecuteTest()&#xD;&#xA;	{&#xD;&#xA;		//Arrange&#xD;&#xA;&#xD;&#xA;		//Act&#xD;&#xA;&#xD;&#xA;		//Assert&#xD;&#xA;		Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(false);&#xD;&#xA;		$END$&#xD;&#xA;	}&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="NAME" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+  <Template uid="a824cac1-a06a-41a4-9760-c38e10118688" shortcut="tm" description="MS TestMethod" text="		[Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute]&#xD;&#xA;		public void $name$Test()&#xD;&#xA;		{&#xD;&#xA;			Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(false);&#xD;&#xA;		}" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="TypeMember" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="name" expression="" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+</TemplatesExport>

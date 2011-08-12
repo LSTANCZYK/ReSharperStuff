@@ -1,0 +1,54 @@
+<TemplatesExport family="Surround Templates">
+  <Template uid="3fd996c0-b318-463a-813b-1c43431c712c" shortcut="" description="&lt;c/&gt;" text="&lt;c&gt;$SELECTION$&lt;/c&gt;" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories>
+      <Category name="xmldoc" />
+    </Categories>
+    <Variables />
+    <CustomProperties />
+  </Template>
+  <Template uid="965c05a4-e614-40fd-a16c-1399e67f5328" shortcut="" description="&lt;paramref name=&quot;$SELECTION$&quot;/&gt;" text="&lt;paramref name=&quot;$SELECTION$&quot;/&gt;" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories>
+      <Category name="xmldoc" />
+    </Categories>
+    <Variables />
+    <CustomProperties />
+  </Template>
+  <Template uid="f327c97f-56be-408d-8785-19a0ba8d5ac8" shortcut="" description="&lt;see cref=&quot;&quot;/&gt;" text="&lt;see cref=&quot;$SELECTION$&quot;/&gt;" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories>
+      <Category name="xmldoc" />
+    </Categories>
+    <Variables />
+    <CustomProperties />
+  </Template>
+  <Template uid="ad63eb8f-6242-4523-9ba3-7028c48229c8" shortcut="" description="&lt;summary/&gt;" text="///&lt;summary&gt;$SELECTION$&lt;/summary&gt;" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories>
+      <Category name="xmldoc" />
+    </Categories>
+    <Variables />
+    <CustomProperties />
+  </Template>
+  <Template uid="9b5e1f69-5c88-4b11-9302-865f25d5eea6" shortcut="" description="foreach" text="foreach($TItem$ $item$ in $enumerable$){$END$ $SELECTION$}" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <CSharpContext context="Statement" minimumLanguageVersion="2.0" />
+    </Context>
+    <Categories />
+    <Variables>
+      <Variable name="enumerable" expression="enumerableVariable()" initialRange="0" />
+      <Variable name="TItem" expression="guessElementType(enumerable)" initialRange="0" />
+      <Variable name="item" expression="complete()" initialRange="0" />
+    </Variables>
+    <CustomProperties />
+  </Template>
+</TemplatesExport>

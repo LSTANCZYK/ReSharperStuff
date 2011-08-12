@@ -1,0 +1,432 @@
+<CustomPatterns>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>'try/finally' block can be converted to 'using' statement</Comment>
+    <ReplaceComment>Convert to 'using' statement</ReplaceComment>
+    <ReplacePattern><![CDATA[using($type$ $var$ = new $type$($args$))
+{
+  $stmt$
+}]]></ReplacePattern>
+    <SearchPattern><![CDATA[$type$ $var$ = new $type$($args$);
+try {
+  $stmt$
+} finally {
+  $var$.Dispose();
+}]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <IdentifierPlaceholder Name="var" Type="" ExactType="False" RegEx="" CaseSensitive="True" />
+      <TypePlaceholder Name="type" Type="System.IDisposable" ExactType="False" />
+      <ArgumentPlaceholder Name="args" Minimal="-1" Maximal="-1" />
+      <StatementPlaceholder Name="stmt" Minimal="-1" Maximal="-1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Conditional statement is redundant</Comment>
+    <ReplaceComment>Remove conditional statement</ReplaceComment>
+    <ReplacePattern>$stmt$</ReplacePattern>
+    <SearchPattern>if(true) $stmt$</SearchPattern>
+    <Params />
+    <Placeholders>
+      <StatementPlaceholder Name="stmt" Minimal="1" Maximal="1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Identical branches in a conditional statement</Comment>
+    <ReplaceComment>Replace with a single branch</ReplaceComment>
+    <ReplacePattern>$stmt$</ReplacePattern>
+    <SearchPattern><![CDATA[if($expr$)
+  $stmt$
+else
+  $stmt$]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="expr" ExpressionType="System.Boolean" ExactType="True" />
+      <StatementPlaceholder Name="stmt" Minimal="1" Maximal="1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment><![CDATA[Redundant compound assignment with &= operator]]></Comment>
+    <ReplaceComment>Replace with simple assignment</ReplaceComment>
+    <ReplacePattern>$bool$ = false</ReplacePattern>
+    <SearchPattern><![CDATA[$bool$ &= false]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="bool" ExpressionType="System.Boolean" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Redundant compound assignment with |= operator</Comment>
+    <ReplaceComment>Remove assignment</ReplaceComment>
+    <SearchPattern>$bool$ |= false;</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="bool" ExpressionType="System.Boolean" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment><![CDATA[Redundant compound assignment with &= operator]]></Comment>
+    <ReplaceComment>Remove assignment</ReplaceComment>
+    <SearchPattern><![CDATA[$bool$ &= true;]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="bool" ExpressionType="System.Boolean" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Redundant initialization to false and condition block</Comment>
+    <ReplaceComment>Initialize with conditional statement</ReplaceComment>
+    <ReplacePattern>$T$ $x$ = $bool$;</ReplacePattern>
+    <SearchPattern><![CDATA[$T$ $x$ = false;
+if($bool$) $x$ = true;]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <TypePlaceholder Name="T" Type="" ExactType="True" />
+      <IdentifierPlaceholder Name="x" Type="" ExactType="False" RegEx="" CaseSensitive="True" />
+      <ExpressionPlaceholder Name="bool" ExpressionType="System.Boolean" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Unnesessary aggregation with Count()</Comment>
+    <ReplacePattern>$seq$.Any($lambda$)</ReplacePattern>
+    <SearchPattern><![CDATA[$seq$.Count($lambda$) > 0]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="seq" ExpressionType="System.Collections.IEnumerable" ExactType="False" />
+      <ArgumentPlaceholder Name="lambda" Minimal="-1" Maximal="-1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Propose string.IsNullOrEmpty usage</Comment>
+    <ReplaceComment>Use string.IsNullOrEmpty()</ReplaceComment>
+    <ReplacePattern>!string.IsNullOrEmpty($str)</ReplacePattern>
+    <SearchPattern><![CDATA[$str$ != null && $str$ != string.Empty]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="str" ExpressionType="string" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Propose IsNullOrWhiteSpace estension method</Comment>
+    <ReplaceComment>Replace with IsNullOrWhitespace() extension method</ReplaceComment>
+    <ReplacePattern>$str$.IsNullOrWhiteSpace()</ReplacePattern>
+    <SearchPattern>$str$.Trim().Length == 0</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="str" ExpressionType="string" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Unnecessary aggregation with Count()</Comment>
+    <ReplacePattern>$seq$.Any($lambda$)</ReplacePattern>
+    <SearchPattern>$seq$.Count($lambda$) != 0</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="seq" ExpressionType="System.Collections.IEnumerable" ExactType="False" />
+      <ArgumentPlaceholder Name="lambda" Minimal="-1" Maximal="-1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Unnecessary aggregation with Count()</Comment>
+    <ReplacePattern>!$seq$.Any($lambda$)</ReplacePattern>
+    <SearchPattern>$seq$.Count($lambda$) == 0</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="seq" ExpressionType="System.Collections.IEnumerable" ExactType="False" />
+      <ArgumentPlaceholder Name="lambda" Minimal="-1" Maximal="-1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Unnessesary aggregation of entire collection with Count(..)</Comment>
+    <ReplacePattern>$seq$.Where($cond$).Skip($count$).Any()</ReplacePattern>
+    <SearchPattern><![CDATA[$seq$.Count($cond$) > $count$]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="seq" ExpressionType="System.Collections.IEnumerable" ExactType="False" />
+      <ExpressionPlaceholder Name="count" ExpressionType="System.Int32" ExactType="False" />
+      <ArgumentPlaceholder Name="cond" Minimal="1" Maximal="1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Unnessesarry check for null before "is"</Comment>
+    <ReplaceComment>Use "is" statement only</ReplaceComment>
+    <ReplacePattern>$id$ is $type$</ReplacePattern>
+    <SearchPattern><![CDATA[$id$ != null && $id$ is $type$]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="id" ExpressionType="" ExactType="True" />
+      <TypePlaceholder Name="type" Type="" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Method StringBuilder.Append can be converted to StringBuilder.AppendFormat</Comment>
+    <ReplaceComment>Convert to StringBuilder.AppendFormat</ReplaceComment>
+    <ReplacePattern>$sb$.AppendFormat($args$)</ReplacePattern>
+    <SearchPattern>$sb$.Append(string.Format($args$))</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="sb" ExpressionType="System.Text.StringBuilder" ExactType="True" />
+      <ArgumentPlaceholder Name="args" Minimal="-1" Maximal="-1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Code is unreachable</Comment>
+    <ReplaceComment>Remove unreachable code</ReplaceComment>
+    <SearchPattern>if(false) $stmt$</SearchPattern>
+    <Params />
+    <Placeholders>
+      <StatementPlaceholder Name="stmt" Minimal="1" Maximal="1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>'if' block is never executed</Comment>
+    <ReplaceComment>Leave only statements from 'else' block</ReplaceComment>
+    <ReplacePattern>$else$</ReplacePattern>
+    <SearchPattern><![CDATA[if(false)
+  $stmt$
+else
+  $else$]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <StatementPlaceholder Name="stmt" Minimal="1" Maximal="1" />
+      <StatementPlaceholder Name="else" Minimal="1" Maximal="1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Redundant compound assignment with |= operator</Comment>
+    <ReplaceComment>Replace with simple assignment</ReplaceComment>
+    <ReplacePattern>$bool$ = true</ReplacePattern>
+    <SearchPattern>$bool$ |= true</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="bool" ExpressionType="System.Boolean" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Redundant compound assignment with |= operator</Comment>
+    <ReplaceComment>Remove assignment</ReplaceComment>
+    <SearchPattern>$bool$ |= false;</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="bool" ExpressionType="System.Boolean" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Redundant initialization to true and condition block</Comment>
+    <ReplaceComment>Initialize with conditional statement</ReplaceComment>
+    <ReplacePattern>$T$ $x$ = !$bool$;</ReplacePattern>
+    <SearchPattern><![CDATA[$T$ $x$ = true;
+if($bool$) $x$ = false;]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <TypePlaceholder Name="T" Type="" ExactType="True" />
+      <IdentifierPlaceholder Name="x" Type="" ExactType="False" RegEx="" CaseSensitive="True" />
+      <ExpressionPlaceholder Name="bool" ExpressionType="System.Boolean" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment><![CDATA[Method OfType<TResult> can be used for type-based filtering]]></Comment>
+    <ReplaceComment><![CDATA[Replace with OfType<TResult>]]></ReplaceComment>
+    <ReplacePattern><![CDATA[$seq$.OfType<$T$>()]]></ReplacePattern>
+    <SearchPattern><![CDATA[$seq$.Where($x$ => $x$ is $T$).Select($y$ => ($T$)$y$)]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <TypePlaceholder Name="T" Type="" ExactType="True" />
+      <ExpressionPlaceholder Name="seq" ExpressionType="System.Collections.IEnumerable" ExactType="False" />
+      <IdentifierPlaceholder Name="x" Type="" ExactType="False" RegEx="" CaseSensitive="True" />
+      <IdentifierPlaceholder Name="y" Type="" ExactType="False" RegEx="" CaseSensitive="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Propose using (new CursorHelper(...))</Comment>
+    <ReplacePattern>using (new CursorHelper($cursor$)) {$statements$}</ReplacePattern>
+    <SearchPattern><![CDATA[Cursor.Current = $cursor$;
+try {
+	$statements$
+}
+finally {
+	Cursor.Current = $otherCursor$;
+}]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="cursor" ExpressionType="System.Windows.Forms.Cursor" ExactType="False" />
+      <ExpressionPlaceholder Name="otherCursor" ExpressionType="System.Windows.Forms.Cursor" ExactType="False" />
+      <StatementPlaceholder Name="statements" Minimal="-1" Maximal="-1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="DO_NOT_SHOW" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>System.Environment.NewLine</ReplacePattern>
+    <SearchPattern>"\r\n"</SearchPattern>
+    <Params />
+    <Placeholders />
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>TryGetVaue is faster than ContainsKey + Get</Comment>
+    <ReplacePattern><![CDATA[if (!$dict$.TryGetValue($key$, out $variable$))
+{
+	$variable$ = $otherValue$;
+}]]></ReplacePattern>
+    <SearchPattern><![CDATA[if ($dict$.ContainsKey($key$)) {
+	$variable$ =  $dict$[$key$];
+}
+else {
+	$variable$ = $otherValue$;
+};]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="dict" ExpressionType="System.Collections.IDictionary" ExactType="False" />
+      <ArgumentPlaceholder Name="key" Minimal="1" Maximal="1" />
+      <ExpressionPlaceholder Name="variable" ExpressionType="" ExactType="True" />
+      <ExpressionPlaceholder Name="otherValue" ExpressionType="" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Unnessesary aggregation of entire collection with Count()</Comment>
+    <ReplacePattern>$seq$.Skip($count$).Any()</ReplacePattern>
+    <SearchPattern><![CDATA[$seq$.Count() > $count$]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="seq" ExpressionType="System.Collections.IEnumerable" ExactType="False" />
+      <ExpressionPlaceholder Name="count" ExpressionType="System.Int32" ExactType="False" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Propose IwUltraGrid.DeselectAllRows($grid$)</Comment>
+    <ReplaceComment>Replace with IwUltraGrid.DeselectAllRows($grid$)</ReplaceComment>
+    <ReplacePattern>IwAG.Win.UI.Controls.IwInfragistics.IwUltraGrid.DeselectAllRows($grid$);</ReplacePattern>
+    <SearchPattern>$grid$.Selected.Rows.Clear();</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="grid" ExpressionType="Infragistics.Win.UltraWinGrid.UltraGrid" ExactType="False" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Propose IwUltraGrid.SelectAllRows($grid$)</Comment>
+    <ReplaceComment>Replace with IwUltraGrid.SelectAllRows($grid$)</ReplaceComment>
+    <ReplacePattern>IwAG.Win.UI.Controls.IwInfragistics.IwUltraGrid.SelectAllRows($grid$);</ReplacePattern>
+    <SearchPattern>$grid$.Selected.Rows.AddRange((UltraGridRow[])$grid$.Rows.All);</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="grid" ExpressionType="Infragistics.Win.UltraWinGrid.UltraGrid" ExactType="False" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Propose IsNullOrWhiteSpace estension method</Comment>
+    <ReplaceComment>Replace with IsNullOrWhitespace() extension method</ReplaceComment>
+    <ReplacePattern>string.IsNullOrWhiteSpace($str$)</ReplacePattern>
+    <SearchPattern>string.IsNullOrEmpty($str$.Trim())</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="str" ExpressionType="string" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>!$str$.IsNullOrWhiteSpace()</ReplacePattern>
+    <SearchPattern><![CDATA[$str$.Trim().Length > 0]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="str" ExpressionType="System.String" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>!$str$.IsNullOrWhiteSpace()</ReplacePattern>
+    <SearchPattern>$str$.Trim().Length != 0</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="str" ExpressionType="System.String" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>$dt$ == default(DateTime)</ReplacePattern>
+    <SearchPattern>$dt$.Equals(DateTime.MinValue)</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="dt" ExpressionType="System.DateTime" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>$dt$ != default(DateTime)</ReplacePattern>
+    <SearchPattern>!$dt$.Equals(DateTime.MinValue)</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="dt" ExpressionType="System.DateTime" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>$v1$ != $v2$</ReplacePattern>
+    <SearchPattern>!($v1$ == $v2$)</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="v1" ExpressionType="" ExactType="True" />
+      <ExpressionPlaceholder Name="v2" ExpressionType="" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>DateTime.Parse($str$, System.Globalization.CultureInfo.InvariantCulture)</ReplacePattern>
+    <SearchPattern>DateTime.Parse($str$)</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="str" ExpressionType="System.String" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>$dt$.ToString(System.Globalization.CultureInfo.InvariantCulture)</ReplacePattern>
+    <SearchPattern>$dt$.ToString()</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="dt" ExpressionType="System.DateTime" ExactType="True" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="SUGGESTION" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>$stopwatch$.Restart();</ReplacePattern>
+    <SearchPattern><![CDATA[$stopwatch$.Reset();
+$stopwatch$.Start();]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="stopwatch" ExpressionType="System.Diagnostics.Stopwatch" ExactType="False" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="ERROR" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>$grid$.NodeMouseDoubleClick += $eventHandler$</ReplacePattern>
+    <SearchPattern>$grid$.DoubleClick += $eventHandler$</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="grid" ExpressionType="Infragistics.Win.UltraWinGrid.UltraGridBase" ExactType="False" />
+      <ExpressionPlaceholder Name="eventHandler" ExpressionType="System.EventHandler" ExactType="False" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Put '$id$' into using construct (context menu on it)</Comment>
+    <ReplacePattern IsNull="True" />
+    <SearchPattern><![CDATA[$Form$ $id$ = new $Form$($args$);
+$statements$
+$id$.ShowDialog($args2$);]]></SearchPattern>
+    <Params />
+    <Placeholders>
+      <TypePlaceholder Name="Form" Type="System.Windows.Forms.Form" ExactType="False" />
+      <ArgumentPlaceholder Name="args" Minimal="-1" Maximal="-1" />
+      <IdentifierPlaceholder Name="id" Type="" ExactType="False" RegEx="" CaseSensitive="True" />
+      <StatementPlaceholder Name="statements" Minimal="-1" Maximal="-1" />
+      <ArgumentPlaceholder Name="args2" Minimal="-1" Maximal="-1" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="WARNING" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <Comment>Wrong image size for module menu item</Comment>
+    <ReplacePattern IsNull="True" />
+    <SearchPattern>new ModuleMenuItem($string$, $click$, $id$)</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="string" ExpressionType="string" ExactType="True" />
+      <ExpressionPlaceholder Name="click" ExpressionType="System.EventHandler" ExactType="False" />
+      <IdentifierPlaceholder Name="id" Type="" ExactType="False" RegEx=".*16x16" CaseSensitive="False" />
+    </Placeholders>
+  </Pattern>
+  <Pattern Severity="HINT" FormatAfterReplace="True" ShortenReferences="True" Language="CSHARP">
+    <ReplacePattern>$exp2$.Equals($exp1$)</ReplacePattern>
+    <SearchPattern>$exp1$.Equals($exp2$)</SearchPattern>
+    <Params />
+    <Placeholders>
+      <ExpressionPlaceholder Name="exp1" ExpressionType="System.Object" ExactType="False" />
+      <ExpressionPlaceholder Name="exp2" ExpressionType="object" ExactType="False" />
+    </Placeholders>
+  </Pattern>
+</CustomPatterns>
